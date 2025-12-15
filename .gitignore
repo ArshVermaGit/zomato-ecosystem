@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Whitelist README.md
+!README.md
+
+# Optional: Maintain .gitignore itself
+!.gitignore
