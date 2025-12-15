@@ -63,9 +63,6 @@ This monorepo contains the following applications:
     cd apps/zomato-customer-app && npx expo start
     ```
 
-## 🤝 Contributing
-
-Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) first.
 
 ## 👨‍💻 Author
 
@@ -76,7 +73,7 @@ Connect with me:
 - 🐙 **GitHub**: [ArshVermaGit](https://github.com/ArshVermaGit)
 - 💼 **LinkedIn**: [arshvermadev](https://www.linkedin.com/in/arshvermadev/)
 - ✖️ **X (Twitter)**: [@TheArshVerma](https://x.com/TheArshVerma)
-- 📧 **Email**: [Arshvermadev@gmail.com](mailto:Arshvermadev@gmail.com)
+- 📧 **Email**: [Arshvermadev@gmail.com](mailto:Arshverma.dev@gmail.com)
 
 ---
 
