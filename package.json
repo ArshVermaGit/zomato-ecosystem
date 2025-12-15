@@ -1,0 +1,25 @@
+{
+    "name": "zomato-ecosystem-monorepo",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "packages/*",
+        "backend/*"
+    ],
+    "scripts": {
+        "start": "lerna run start --stream --parallel",
+        "build": "lerna run build --stream",
+        "dev": "lerna run dev --stream --parallel",
+        "test": "lerna run test --stream",
+        "lint": "lerna run lint --stream"
+    },
+    "devDependencies": {
+        "@types/jsonwebtoken": "^9.0.10",
+        "@types/luxon": "^3.7.1",
+        "@types/ms": "^2.1.0",
+        "eslint": "^8.0.0",
+        "lerna": "^8.0.0",
+        "prettier": "^3.0.0",
+        "typescript": "^5.0.0"
+    }
+}
