@@ -6,3 +6,13 @@
 
 # Optional: Maintain .gitignore itself
 !.gitignore
+
+# Whitelist Design System
+!packages/design-tokens/src/**
+!packages/design-tokens/package.json
+!packages/design-tokens/tsconfig.json
+
+# Whitelist UI Library
+!packages/ui/src/**
+!packages/ui/package.json
+!packages/ui/tsconfig.json
