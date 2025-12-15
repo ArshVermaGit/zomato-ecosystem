@@ -8,10 +8,10 @@ This monorepo contains the following applications:
 
 | Application | GitHub Repository | Description | Tech Stack |
 |-------------|-------------------|-------------|------------|
-| **[Customer App](https://github.com/ArshVermaGit/zomato-customer-app) | For users to browse food, order, and track deliveries. | React Native (Expo) |
-| **[Restaurant Partner App](https://github.com/ArshVermaGit/zomato-restaurant-partner) | For restaurants to manage menus, orders, and business. | React Native (Expo) |
-| **[Delivery Partner App](https://github.com/ArshVermaGit/zomato-delivery-partner) | For drivers to accept orders and navigate to locations. | React Native (Expo) |
-| **[Admin Dashboard](https://github.com/ArshVermaGit/zomato-admin-dashboard) | Super admin panel for managing the entire platform. | Next.js 16, Tailwind |
+| [Customer App](https://github.com/ArshVermaGit/zomato-customer-app) | For users to browse food, order, and track deliveries. | React Native (Expo) |
+| [Restaurant Partner App](https://github.com/ArshVermaGit/zomato-restaurant-partner) | For restaurants to manage menus, orders, and business. | React Native (Expo) |
+| [Delivery Partner App](https://github.com/ArshVermaGit/zomato-delivery-partner) | For drivers to accept orders and navigate to locations. | React Native (Expo) |
+| [Admin Dashboard](https://github.com/ArshVermaGit/zomato-admin-dashboard) | Super admin panel for managing the entire platform. | Next.js 16, Tailwind |
 | [Backend API](https://github.com/ArshVermaGit/zomato-backend) | Centralized server handling all requests. | NestJS, PostgreSQL |
 
 ## ✨ Key Features across Ecosystem
