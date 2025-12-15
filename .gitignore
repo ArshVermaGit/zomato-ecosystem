@@ -16,3 +16,10 @@
 !packages/ui/src/**
 !packages/ui/package.json
 !packages/ui/tsconfig.json
+
+# Whitelist Configuration and Source
+!package.json
+!**/package.json
+!apps/**/src/**
+!backend/**/src/**
+!backend/**/package.json
