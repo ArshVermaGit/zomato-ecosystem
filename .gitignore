@@ -23,3 +23,8 @@
 !apps/**/src/**
 !backend/**/src/**
 !backend/**/package.json
+
+# Whitelist API Client
+!packages/api-client/src/**
+!packages/api-client/package.json
+!packages/api-client/tsconfig.json
