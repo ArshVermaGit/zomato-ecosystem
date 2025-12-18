@@ -26,6 +26,7 @@
         "@radix-ui/react-alert-dialog": "^1.1.15",
         "@radix-ui/react-progress": "^1.1.8",
         "@types/mapbox-gl": "^3.4.1",
+        "deprecated-react-native-prop-types": "^5.0.0",
         "react-map-gl": "^8.1.0"
     }
 }
