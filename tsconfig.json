@@ -1,0 +1,68 @@
+{
+    "compilerOptions": {
+        "target": "es2019",
+        "module": "commonjs",
+        "lib": [
+            "es2019",
+            "dom"
+        ],
+        "declaration": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": false,
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {
+            "@customer-app/*": [
+                "apps/zomato-customer-app/*"
+            ],
+            "@delivery-app/*": [
+                "apps/zomato-delivery-partner/*"
+            ],
+            "@restaurant-app/*": [
+                "apps/zomato-restaurant-partner/*"
+            ],
+            "@admin/*": [
+                "apps/zomato-admin-dashboard/*"
+            ],
+            "@zomato/shared-types": [
+                "packages/shared-types/src/index.ts"
+            ],
+            "@zomato/shared-types/*": [
+                "packages/shared-types/src/*"
+            ],
+            "@zomato/shared-utils": [
+                "packages/shared-utils/src/index.ts"
+            ],
+            "@zomato/shared-utils/*": [
+                "packages/shared-utils/src/*"
+            ],
+            "@zomato/design-tokens": [
+                "packages/design-tokens/src/index.ts"
+            ],
+            "@zomato/design-tokens/*": [
+                "packages/design-tokens/src/*"
+            ],
+            "@zomato/api-client": [
+                "packages/api-client/src/index.ts"
+            ],
+            "@zomato/api-client/*": [
+                "packages/api-client/src/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
