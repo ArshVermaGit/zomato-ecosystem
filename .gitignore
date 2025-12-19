@@ -4,11 +4,18 @@
 # Whitelist README.md
 !README.md
 
+# Whitelist Directories
+!apps/
+!packages/
+!backend/
+
 # Whitelist Configuration and Source
 !.gitignore
 !.watchmanconfig
 !**/metro.config.js
 !package.json
+!lerna.json
+!nx.json
 !tsconfig*.json
 !jest.config*.js
 !docs/**
