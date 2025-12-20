@@ -55,4 +55,4 @@
 !packages/shared-utils/tsconfig.json
 !packages/test-utils/src/**
 !packages/test-utils/package.json
-!packages/test-utils/tsconfig.json
+!packages/test-utils/tsconfig.jsonbackend/
