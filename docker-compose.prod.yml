@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: zomato-postgres-prod
+    environment:
+      POSTGRES_USER: ${DB_USER:-zomato}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-zomato_prod_secret}
+      POSTGRES_DB: ${DB_NAME:-zomato_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - zomato-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER:-zomato}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: zomato-redis-prod
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - zomato-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend/zomato-api
+      dockerfile: Dockerfile
+    container_name: zomato-backend-prod
+    environment:
+      DATABASE_URL: postgresql://${DB_USER:-zomato}:${DB_PASSWORD:-zomato_prod_secret}@postgres:5432/${DB_NAME:-zomato_db}
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET:-your_jwt_secret_here}
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - zomato-network
+    restart: unless-stopped
+
+  admin:
+    build:
+      context: ./apps/zomato-admin-dashboard
+      dockerfile: Dockerfile
+    container_name: zomato-admin-prod
+    environment:
+      NEXT_PUBLIC_API_URL: ${API_URL:-http://localhost:3000/api}
+    ports:
+      - "3001:3000"
+    depends_on:
+      - backend
+    networks:
+      - zomato-network
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    container_name: zomato-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./infrastructure/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./infrastructure/nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - backend
+      - admin
+    networks:
+      - zomato-network
+    restart: unless-stopped
+
+networks:
+  zomato-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
