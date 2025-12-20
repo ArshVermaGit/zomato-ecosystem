@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: zomato-postgres
+    environment:
+      POSTGRES_USER: zomato
+      POSTGRES_PASSWORD: zomato123
+      POSTGRES_DB: zomato_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zomato"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: zomato-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend/zomato-api
+      dockerfile: Dockerfile.dev
+    container_name: zomato-backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend/zomato-api:/app
+      - /app/node_modules
+    environment:
+      - DATABASE_URL=postgresql://zomato:zomato123@postgres:5432/zomato_db
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: npm run start:dev
+
+  admin-dashboard:
+    build:
+      context: ./apps/zomato-admin-dashboard
+      dockerfile: Dockerfile.dev
+    container_name: zomato-admin
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./apps/zomato-admin-dashboard:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3000/api/v1
+    command: npm run dev
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: zomato-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@zomato.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  redis_data:
