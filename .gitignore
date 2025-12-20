@@ -12,6 +12,10 @@
 # Whitelist Configuration and Source
 !.gitignore
 !.watchmanconfig
+!.env.example
+!.eslintrc.js
+!.prettierrc
+!docker-compose*.yml
 !**/metro.config.js
 !package.json
 !lerna.json
