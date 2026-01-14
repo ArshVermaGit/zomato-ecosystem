@@ -7,8 +7,6 @@
 # Whitelist Directories
 !apps/
 !packages/
-!backend/
-
 # Whitelist Configuration and Source
 !.gitignore
 !.watchmanconfig
@@ -38,9 +36,6 @@
 !package.json
 !**/package.json
 !apps/**/src/**
-!backend/**/src/**
-!backend/**/package.json
-
 # Whitelist API Client
 !packages/api-client/src/**
 !packages/api-client/package.json
@@ -55,4 +50,4 @@
 !packages/shared-utils/tsconfig.json
 !packages/test-utils/src/**
 !packages/test-utils/package.json
-!packages/test-utils/tsconfig.jsonbackend/
+!packages/test-utils/tsconfig.json
